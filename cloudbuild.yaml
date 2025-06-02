@@ -7,11 +7,11 @@ steps:
     
   # Membuat image Docker dengan nama projek_akhir
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/projekakhir", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/projek-akhir", "."]
 
   # Push image ke Google Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/projekakhir"]
+    args: ["push", "gcr.io/$PROJECT_ID/projek-akhir"]
 
   # Deploy ke Cloud Run dengan nama service projek_akhir
   - name: "gcr.io/cloud-builders/gcloud"
@@ -19,9 +19,9 @@ steps:
       [
         "run",
         "deploy",
-        "projek_akhir",
+        "projek-akhir",
         "--image",
-        "gcr.io/$PROJECT_ID/projekakhir",
+        "gcr.io/$PROJECT_ID/projek-akhir",
         "--timeout",
         "1000s",
         "--port",
